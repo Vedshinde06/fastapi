@@ -1,3 +1,6 @@
+
+#To organize hierarchy in data nested models are used
+
 from pydantic import BaseModel
 
 class Address(BaseModel):
@@ -24,3 +27,12 @@ def insert_patient(patient: Patient):
     print(patient.address.city)
     
 insert_patient(patient1_obj)
+
+
+temp = patient1_obj.model_dump_json()# here we can use include and exclude parameters for specific values
+print(temp)                          # also exclude_unset can be used
+print(type(temp))
+
+temp = patient1_obj.model_dump()
+print(temp)
+print(type(temp))
