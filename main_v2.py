@@ -90,5 +90,8 @@ def sort_patients(sort_by : str = Query(..., description='Sort on the basis of H
 def create_patient(patient: Patient):
     data = load_data()
     
+    # check if patient already exists
     if patient.id in data:
         raise HTTPException(status_code=400, detail="Patient with this ID already exists")
+    
+    # adding new patient to the database
